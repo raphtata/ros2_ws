@@ -1,0 +1,20 @@
+[0.324s] Invoking command in '/home/raf/ros2_ws/src/build/my_cpp_pkg': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/raf/ros2_ws/src/build/my_cpp_pkg -- -j2 -l2
+[1.034s] Invoked command in '/home/raf/ros2_ws/src/build/my_cpp_pkg' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/raf/ros2_ws/src/build/my_cpp_pkg -- -j2 -l2
+[1.149s] Invoking command in '/home/raf/ros2_ws/src/build/my_cpp_pkg': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/raf/ros2_ws/src/build/my_cpp_pkg
+[1.169s] -- Install configuration: ""
+[1.171s] -- Up-to-date: /home/raf/ros2_ws/src/install/my_cpp_pkg/share/ament_index/resource_index/package_run_dependencies/my_cpp_pkg
+[1.173s] -- Up-to-date: /home/raf/ros2_ws/src/install/my_cpp_pkg/share/ament_index/resource_index/parent_prefix_path/my_cpp_pkg
+[1.175s] -- Up-to-date: /home/raf/ros2_ws/src/install/my_cpp_pkg/share/my_cpp_pkg/environment/ament_prefix_path.sh
+[1.176s] -- Up-to-date: /home/raf/ros2_ws/src/install/my_cpp_pkg/share/my_cpp_pkg/environment/ament_prefix_path.dsv
+[1.178s] -- Up-to-date: /home/raf/ros2_ws/src/install/my_cpp_pkg/share/my_cpp_pkg/environment/path.sh
+[1.179s] -- Up-to-date: /home/raf/ros2_ws/src/install/my_cpp_pkg/share/my_cpp_pkg/environment/path.dsv
+[1.181s] -- Up-to-date: /home/raf/ros2_ws/src/install/my_cpp_pkg/share/my_cpp_pkg/local_setup.bash
+[1.182s] -- Up-to-date: /home/raf/ros2_ws/src/install/my_cpp_pkg/share/my_cpp_pkg/local_setup.sh
+[1.183s] -- Up-to-date: /home/raf/ros2_ws/src/install/my_cpp_pkg/share/my_cpp_pkg/local_setup.zsh
+[1.185s] -- Up-to-date: /home/raf/ros2_ws/src/install/my_cpp_pkg/share/my_cpp_pkg/local_setup.dsv
+[1.186s] -- Installing: /home/raf/ros2_ws/src/install/my_cpp_pkg/share/my_cpp_pkg/package.dsv
+[1.190s] -- Up-to-date: /home/raf/ros2_ws/src/install/my_cpp_pkg/share/ament_index/resource_index/packages/my_cpp_pkg
+[1.192s] -- Up-to-date: /home/raf/ros2_ws/src/install/my_cpp_pkg/share/my_cpp_pkg/cmake/my_cpp_pkgConfig.cmake
+[1.193s] -- Up-to-date: /home/raf/ros2_ws/src/install/my_cpp_pkg/share/my_cpp_pkg/cmake/my_cpp_pkgConfig-version.cmake
+[1.194s] -- Up-to-date: /home/raf/ros2_ws/src/install/my_cpp_pkg/share/my_cpp_pkg/package.xml
+[1.206s] Invoked command in '/home/raf/ros2_ws/src/build/my_cpp_pkg' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/raf/ros2_ws/src/build/my_cpp_pkg
