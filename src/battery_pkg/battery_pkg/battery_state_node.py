@@ -20,7 +20,7 @@ class BatteryStateNode(Node):
         self.timer_on  = self.create_timer(self.timer_on_period, self.timer_on_callback)
 
     
-    def call_led_server(self, a, b):
+    def call_led_server(self, led, state):
 
         client = self.create_client(BatteryState, "battery_state" )
             
@@ -28,30 +28,30 @@ class BatteryStateNode(Node):
             self.get_logger().info( "wait for server")
         
         request = BatteryState.Request()
-        request.led = a
-        request.state = b 
+        request.led_number = led
+        request.state = state 
          
         #get the result 
         future = client.call_async(request)
-        future.add_done_callback(partial(self.call_back_result, a = a, b = b))
+        future.add_done_callback(partial(self.call_back_result, led = led, state = state))
     
     def timer_off_callback(self):
-        self.call_led_server( 3, False)
+        self.call_led_server( 1, 0)
         #at the end of the timer off , it resets the timer on
         self.timer_off.cancel()
         self.timer_on.reset() 
 
     def timer_on_callback(self):
-        self.call_led_server( 3, True)
+        self.call_led_server( 1, 1)
         self.timer_on.cancel()
         #at the end of the timer on , it resets the timer off
         self.timer_off.reset()
 
-    def call_back_result(self, future, a, b):
+    def call_back_result(self, future, led, state):
         try : 
             result = future.result()
             if result : 
-                self.get_logger().info("Led has changed and is " + str("on" if b else "off"))
+                self.get_logger().info("Led " + str(led) + "has changed and is " + str("on" if state == 1 else "off"))
         except Exception as e:
             self.get_logger().info("service call failed %r" %(e,))
 
