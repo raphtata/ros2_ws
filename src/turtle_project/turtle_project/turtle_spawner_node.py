@@ -18,14 +18,17 @@ class TurtleSpawner(Node):
         # call super() in the constructor to initialize the Node object
         # the parameter you pass is the node name
         super().__init__('turtle_spawn_node')
-        self.timer_period = 1.0
+
+        self.declare_parameter("spawner_frequency", 1.0)
+
+        self.spawner_period = self.get_parameter("spawner_frequency").value
         self.turtle_count_ = 0
-        self.timer_pawner= self.create_timer(self.timer_period, self.timer_spawner_callback)
+        self.timer_pawner= self.create_timer(self.spawner_period, self.timer_spawner_callback)
         self.server = self.create_service(
             CatchTurtle, "catch_service" , self.turtle_service_callback)
         self.turtle_list_ = []
         self.turtle_alive_publisher_ = self.create_publisher(TurtleAlive, 'alive_turtles', 10)
-        self.timer = self.create_timer(self.timer_period, self.turtles_update)
+        self.timer = self.create_timer(self.spawner_period, self.turtles_update)
     
     def turtles_update(self): 
         msg = TurtleAlive()
