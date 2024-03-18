@@ -30,18 +30,30 @@ class TurtleController(Node):
         self.subscriber = self.create_subscription(TurtleAlive, 'alive_turtles', self.turtle_alive_callback, 10)
         self.control_loop_timer = self.create_timer(0.01, self.control_callback)
     
-    def angular (self , x2, x1 , y2 , y1):
+    def distance(self, x2, x1 , y2 , y1):
+
         disX = x2 - x1
         disY = y2 - y1
-        self.distPtTr_ = math.sqrt(disX*disX + disY*disY)
+        return math.sqrt(disX*disX + disY*disY)
+  
+    def angular (self , x2, x1 , y2 , y1):
 
-        alpha = math.atan2 (disY , disX)
+        self.distPtTr_ = self.distance(x2, x1 , y2 , y1)
+        alpha = math.atan2 (y2 - y1 , x2 - x1)
         return alpha
     
+    def catch_closer_turtle(self, turtles):
+        min_dist = math.inf
+        turtle_to_catch = None
+        for  turlte in turtles : 
+            if self.distance(turlte.x, self.pose_.x,turlte.y, self.pose_.y ) < min_dist : 
+                min_dist = self.distance(turlte.x, self.pose_.x,turlte.y, self.pose_.y )
+                turtle_to_catch = turlte
+        return turtle_to_catch
+    
     def turtle_alive_callback(self,msg):
-
         if len(msg.turtles) > 0:
-            self.turtle_to_catch_ = msg.turtles[0]
+            self.turtle_to_catch_ = self.catch_closer_turtle(msg.turtles)
 
     def control_callback(self):
 
@@ -62,10 +74,10 @@ class TurtleController(Node):
             angular_diff += 2*math.pi
 
         #angle
-        msg_to_send.angular.z = angular_diff
+        msg_to_send.angular.z = 6*angular_diff
 
         #position
-        msg_to_send.linear.x  = self.distPtTr_ 
+        msg_to_send.linear.x  = 2*self.distPtTr_ 
         
         if self.distPtTr_ < 0.4 :
             msg_to_send.linear.x  = 0.0

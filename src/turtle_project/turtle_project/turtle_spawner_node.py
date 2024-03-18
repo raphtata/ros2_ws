@@ -18,7 +18,7 @@ class TurtleSpawner(Node):
         # call super() in the constructor to initialize the Node object
         # the parameter you pass is the node name
         super().__init__('turtle_spawn_node')
-        self.timer_period = 4.0
+        self.timer_period = 1.0
         self.turtle_count_ = 0
         self.timer_pawner= self.create_timer(self.timer_period, self.timer_spawner_callback)
         self.server = self.create_service(
